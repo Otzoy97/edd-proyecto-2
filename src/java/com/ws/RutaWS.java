@@ -107,11 +107,11 @@ public class RutaWS {
         //Escriba un archivo con nombre -dotMB- y extensión -.dot-
         Archivo.escribirArchivo(str, "dotGR", ".dot");
         //Ejecuta un comando en el cmd
-        Archivo.generarGrafico("neato -Tbmp dotGR.dot -o GR.bmp");
+        Archivo.generarGrafico("dot -Tpng dotGR.dot -o GR.png");
         //Elimina el archivo -dotMB-
         Archivo.eliminarArchivo("dotGR.dot");
         //Genera un base65;
-        return Archivo.toBase64("GR.bmp");
+        return Archivo.toBase64("GR.png");
     }
 
     /**
@@ -131,11 +131,11 @@ public class RutaWS {
         //Escriba un archivo con nombre -dotMB- y extensión -.dot-
         Archivo.escribirArchivo(str, "dotMB", ".dot");
         //Ejecuta un comando en el cmd
-        Archivo.generarGrafico("neato -Tbmp dotMB.dot -o MB.bmp");
+        Archivo.generarGrafico("neato -Tpng dotMB.dot -o MB.png");
         //Elimina el archivo -dotMB-
         Archivo.eliminarArchivo("dotMB.dot");
         //Genera un base65;
-        return Archivo.toBase64("MB.bmp");
+        return Archivo.toBase64("MB.png");
     }
 
     /**
@@ -157,11 +157,11 @@ public class RutaWS {
         //Escriba un archivo con nombre -dotMB- y extensión -.dot-
         Archivo.escribirArchivo(str, "dotMB", ".dot");
         //Ejecuta un comando en el cmd
-        Archivo.generarGrafico("neato -Tbmp dotMB.dot -o MB.bmp");
+        Archivo.generarGrafico("dot -Tpng dotMB.dot -o MB.png");
         //Elimina el archivo -dotMB-
         Archivo.eliminarArchivo("dotMB.dot");
         //Genera un base65;
-        return Archivo.toBase64("MB.bmp");
+        return Archivo.toBase64("MB.png");
     }
 
     /**

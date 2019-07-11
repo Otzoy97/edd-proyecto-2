@@ -8,9 +8,12 @@ package com.viaje;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 
 /**
@@ -28,12 +31,14 @@ public class Archivo {
      * @return
      */
     public static boolean escribirArchivo(String contenido, String nombre, String extension) {
-        FileWriter fw = null;
+        FileOutputStream fw = null;
         BufferedWriter bf = null;
+        OutputStreamWriter sb = null;
         String script = null;
         try {
-            fw = new FileWriter(new File(nombre + extension));
-            bf = new BufferedWriter(fw);
+            fw = new FileOutputStream(new File(nombre + extension));
+            sb = new OutputStreamWriter(fw, StandardCharsets.UTF_8);
+            bf = new BufferedWriter(sb);
             bf.write(contenido);
             //Ejecuta un comando DOT
         } catch (Exception ex) {
@@ -45,6 +50,9 @@ public class Archivo {
                 }
                 if (fw != null) {
                     fw.close();
+                }
+                if (sb != null) {
+                    sb.close();
                 }
             } catch (IOException ex) {
                 return false;

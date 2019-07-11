@@ -47,10 +47,10 @@ public class DestinoWS {
         //Escriba un archivo con nombre -dotMB- y extensión -.dot-
         Archivo.escribirArchivo(str,"dotTB", ".dot");
         //Ejecuta un comando en el cmd
-        Archivo.generarGrafico("dot -Tbmp dotTB.dot -o TreeB.bmp");
+        Archivo.generarGrafico("dot -Tpng dotTB.dot -o TreeB.png");
         //Elimina el archivo -dotMB-
-        Archivo.eliminarArchivo("dotTB.dot");
+        //Archivo.eliminarArchivo("dotTB.dot");
         //Genera un base65;
-        return Archivo.toBase64("TreeB.bmp");
+        return Archivo.toBase64("TreeB.png");
     }
 }
