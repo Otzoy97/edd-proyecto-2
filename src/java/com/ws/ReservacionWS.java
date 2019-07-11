@@ -154,10 +154,10 @@ public class ReservacionWS {
         //Escriba un archivo con nombre -dotMB- y extensión -.dot-
         Archivo.escribirArchivo(str, "dotHT", ".dot");
         //Ejecuta un comando en el cmd
-        Archivo.generarGrafico("dot -Tpng dotHT.dot -o HT.png");
+        Archivo.generarGrafico("neato -Tbmp dotHT.dot -o HT.bmp");
         //Elimina el archivo -dotMB-
         Archivo.eliminarArchivo("dotHT.dot");
         //Genera un base65;
-        return Archivo.toBase64("HT.png");
+        return Archivo.toBase64("HT.bmp");
     }
 }

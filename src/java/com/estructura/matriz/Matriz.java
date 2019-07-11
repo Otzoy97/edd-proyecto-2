@@ -251,14 +251,14 @@ public class Matriz {
             for (NodoB temp : aux) {
                 if (temp.siguiente != null) {
                     if (temp.izquierda != null) {
-                        sb.append(String.format("BT%d:f%d -- BT%d;\n", aux.hashCode(), contador++, temp.izquierda.hashCode()));
+                        sb.append(String.format("\"BT%d\":f%d -- \"BT%d\";\n", aux.hashCode(), contador++, temp.izquierda.hashCode()));
                     }
                 } else {
                     if (temp.izquierda != null) {
-                        sb.append(String.format("BT%d:f%d -- BT%d;\n", aux.hashCode(), contador++, temp.izquierda.hashCode()));
+                        sb.append(String.format("\"BT%d\":f%d -- \"BT%d\";\n", aux.hashCode(), contador++, temp.izquierda.hashCode()));
                     }
                     if (temp.derecha != null) {
-                        sb.append(String.format("BT%d:f%d -- BT%d;\n", aux.hashCode(), contador++, temp.derecha.hashCode()));
+                        sb.append(String.format("\"BT%d\":f%d -- \"BT%d\";\n", aux.hashCode(), contador++, temp.derecha.hashCode()));
                     }
                 }
             }
@@ -357,7 +357,7 @@ public class Matriz {
     /**
      * Mantiene el número de filas y columnas del árbol
      */
-    private static int dimension;
+    private int dimension;
 
     /**
      * Constructor por defecto
@@ -655,7 +655,7 @@ public class Matriz {
      * @return script del árbol B para dot
      */
     public String graficarB_Arbol() {
-        return String.format("graph {\nnode[shape=record];splines=line;\n%s}", this.idOrigen.graph(this.idOrigen.raiz));
+        return String.format("graph {\nnode[shape=record];splines=line;\n%s}", this.idDestino.graph(this.idDestino.raiz));
     }
 
     /**
@@ -981,21 +981,20 @@ public class Matriz {
      */
     public String[] linealizar(){
         if(this.idOrigen.esVacio()) return null;
-        linealizacion = new String[Matriz.dimension];
-        contador_ = 0;
+        linealizacion = new String[this.idOrigen.tamanio];
         linealizar(this.idOrigen.raiz);
         return linealizacion;
     }
     
     private static String[] linealizacion;
-    private static int contador_;
+    
     private void linealizar (Rama raiz){
         if(raiz == null) return;
         StringBuilder sb = new StringBuilder();
         sb.append(";");
         for(NodoB n : raiz){
             linealizar(n.izquierda);
-            linealizacion[contador_++] = String.format("%d,%s",n.Dato().Codigo(),n.Dato().Nombre());
+            linealizacion[posOrigen(n.Dato().Codigo())] = String.format("%d,%s",n.Dato().Codigo(),n.Dato().Nombre());
             if(n.siguiente == null)
                 linealizar(n.derecha);
         }   
