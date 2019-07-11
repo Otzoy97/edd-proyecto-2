@@ -35,11 +35,11 @@ public class ReservacionWS {
      * @return
      */
     @WebMethod(operationName = "agregarReservacion")
-    public String agregarReservacion(@WebParam(name = "llave") int llave, @WebParam(name = "nombreCliente") String nombreCliente, @WebParam(name = "costo") float costo, @WebParam(name = "tiempo") float tiempo, @WebParam(name = "viaje") Lista<Integer> viaje) {
+    public String agregarReservacion(@WebParam(name = "llave") int llave, @WebParam(name = "nombreCliente") String nombreCliente, @WebParam(name = "costo") float costo, @WebParam(name = "tiempo") float tiempo, @WebParam(name = "viaje") String[] viaje) {
         try {
             Lista<String> l = new Lista();
-            for (Integer i : viaje) {
-                l.agregarAlFinal(m.nombreDestino(i));
+            for (String i : viaje) {
+                l.agregarAlFinal(i);
             }
             th.insertar(llave, new Reservacion(nombreCliente, costo, tiempo, l));
         } catch (Exception ex) {
