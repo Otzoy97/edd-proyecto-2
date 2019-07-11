@@ -99,6 +99,8 @@ public class Ruta {
         for (int i = 0; i < this.piloto.length; i++) {
             aux += (char) (this.piloto[i]-this.llave[i]);
         }
+        aux = aux.replace("<", "*");
+        aux = aux.replace(">", "*");
         return aux;
     }
 }

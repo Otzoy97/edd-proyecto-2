@@ -941,9 +941,10 @@ public class Matriz {
             if (cell.Destino() == destino) {
                 //Se encontró una ruta
                 StringBuilder sb = new StringBuilder();
-                sb.append("graph{");
-                sb.append(String.format("node[label=\"{De: %s|A: %s|Q%.2f|%.2f min|%s}\"];", nombreDestino(origen), nombreDestino(destino), cell.Ruta().Costo(), cell.Ruta().Tiempo(), cell.Ruta().Piloto()));
+                sb.append("graph{\nnode[shape=record];\n");
+                sb.append(String.format("node1[label=\"{De: %s|A: %s|Q%.2f|%.2f min|%s}\"]; node1;", nombreDestino(origen), nombreDestino(destino), cell.Ruta().Costo(), cell.Ruta().Tiempo(), cell.Ruta().Piloto()));
                 sb.append("}");
+                return sb.toString();
             }
         }
         return null;
