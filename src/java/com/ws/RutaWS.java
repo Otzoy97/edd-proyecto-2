@@ -70,7 +70,7 @@ public class RutaWS {
     @WebMethod(operationName = "generarViajes")
     public String[] generarViajes(@WebParam(name = "origen") int origen, @WebParam(name = "destino") int destino) {
         Lista<Lista<RutaD>> l = m.generarViajes(origen, destino);
-        StringBuilder sb = new StringBuilder();
+        StringBuilder sb ;
         String viajes[] = new String[l.Largo()];
         int c1 = 0;
         float cV, tV;
@@ -78,11 +78,12 @@ public class RutaWS {
             //Reinicia las variables
             cV = 0;
             tV = 0;
+            sb = new StringBuilder();
             //Recorre la lista recuperando los datos
             for (RutaD d : r) {
                 sb.append(String.format(",%s", m.nombreDestino(d.destino)));
-                cV += d.ruta.Costo();
-                tV += d.ruta.Tiempo();
+                cV += d.ruta != null ? d.ruta.Costo() : 0;
+                tV += d.ruta != null ? d.ruta.Tiempo() : 0;
             }
             viajes[c1++] = String.format("%.2f,%.2f%s", cV, tV, sb.toString());
         }
@@ -155,13 +156,13 @@ public class RutaWS {
             return "";
         }
         //Escriba un archivo con nombre -dotMB- y extensión -.dot-
-        Archivo.escribirArchivo(str, "dotMB", ".dot");
+        Archivo.escribirArchivo(str, "dotRE", ".dot");
         //Ejecuta un comando en el cmd
-        Archivo.generarGrafico("neato -Tbmp dotMB.dot -o MB.bmp");
+        Archivo.generarGrafico("dot -Tpng dotRE.dot -o RE.png");
         //Elimina el archivo -dotMB-
-        Archivo.eliminarArchivo("dotMB.dot");
+        //Archivo.eliminarArchivo("dotMB.dot");
         //Genera un base65;
-        return Archivo.toBase64("MB.bmp");
+        return Archivo.toBase64("RE.png");
     }
 
     /**
