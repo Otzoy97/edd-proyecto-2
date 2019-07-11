@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<endpoints version="2.0" xmlns="http://java.sun.com/xml/ns/jax-ws/ri/runtime">
+  <endpoint implementation="com.ws.ReservacionWS" name="ReservacionWS" url-pattern="/ReservacionWS"/>
+  <endpoint implementation="com.ws.DestinoWS" name="DestinoWS" url-pattern="/DestinoWS"/>
+  <endpoint implementation="com.ws.RutaWS" name="RutaWS" url-pattern="/RutaWS"/>
+</endpoints>

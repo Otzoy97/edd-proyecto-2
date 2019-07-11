@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jax-ws xmlns="http://www.netbeans.org/ns/jax-ws/1">
+  <services>
+    <service name="ReservacionWS">
+      <implementation-class>com.ws.ReservacionWS</implementation-class>
+    </service>
+    <service name="DestinoWS">
+      <implementation-class>com.ws.DestinoWS</implementation-class>
+    </service>
+    <service name="RutaWS">
+      <implementation-class>com.ws.RutaWS</implementation-class>
+    </service>
+  </services>
+  <clients/>
+  <jsr109>false</jsr109>
+</jax-ws>
